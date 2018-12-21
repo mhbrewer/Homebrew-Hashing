@@ -1,0 +1,28 @@
+@using HashApp
+@model Block
+@{
+    ViewData["Title"] = "Block Page";
+}
+<h1>Block</h1>
+<label class="inline">Data: </label>
+<form class="inline" action="\block" method="get">
+    <input class="bordered" type="text" name="input">
+    <button type="submit">Submit</button>
+</form>
+<div class="output">
+    <label class="inline">Output: </label>
+    <div class="block">
+        <div class="left">
+            <p>Block ID: </p>
+            <p>Data: </p>
+            <p>Previous Hash: </p>
+            <p>Current Hash: </p>
+        </div>
+        <div class="right">
+            <p class="blockBox">@Model.BlockId</p>
+            <p class="blockBox">@Model.data</p>
+            <p class="blockBox">@Model.prev</p>
+            <p class="blockBox">@Model.hash</p>
+        </div>
+    </div>
+</div>

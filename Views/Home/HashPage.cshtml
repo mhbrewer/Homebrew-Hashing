@@ -1,0 +1,15 @@
+@using HashApp
+@model String
+@{
+    ViewData["Title"] = "Hash Page";
+}
+<h1>Hash</h1>
+<label class="inline">Data: </label>
+<form class="inline" action="\hash" method="get">
+    <input class="bordered" type="text" name="input">
+    <button type="submit">Submit</button>
+</form>
+<div class="output">
+    <label class="inline">Output: </label>
+    <p class="inline bordered hashBox">@Model</p>
+</div>

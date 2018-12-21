@@ -1,0 +1,76 @@
+@{
+    ViewData["Title"] = "Information Page";
+}
+<h1>Info</h1>
+<h2>1) String to Bit Array:</h2>
+<p>
+    This algorithm takes in a bit array and outputs a string representing a 64-digit hexadecimal number. 
+    In this case, the only inputs I hash are strings, and I used the 
+    <a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8 Encoding System</a> to convert from a string to a bit array. 
+</p>
+
+
+<h2>2) Bit Array to Int32 Array:</h2>
+<p>
+    I decided to convert the given bit array into 16 integers between 0 and 2^32 (the max value for an int32 datatype). 
+    These integers were built by taking a 32 bit subarray from the entire bit array. 
+    The pseudocode finding the indices that determine the subarray is as follows:
+</p>
+<div class="pseudocodeBlock">
+    <p class="pseudocodeText">for(1 <= i <= 16)</p>
+    <p class="pseudocodeText tab">start = (32 * i) mod L</p>
+    <p class="pseudocodeText tab">end = (start + 32) mod L</p>
+    <p class="pseudocodeText tab">n_i = B[start - end],</p>
+</div>
+<p>
+    where B is the bit array and L is the length of B. If the bit array has a length greater than 512 
+    (16 * 32, the amount of data that would be 'used' by the above algorithm), then I split the array into 
+    two equal halves and "combine" them, I chose to use the pointwise xor logical operator, until the array is 
+    less than 512 bits. The number defined is n_i, which is a base 2 integer defined by the 32 element array 
+    B[start - end], which then for simplicity are converted into base 10.
+</p>
+
+
+<h2>3) Use of the Sine Function:</h2>
+<p>
+    These 16 integers are then put through the Sien function. I convert each n_i into another integer x_i 
+    by doing the following
+</p>
+<div class="pseudocodeBlock">
+    <p class="pseudocodeText">x_i = Floor((2^16) * sine(n_i + i)).</p>
+</div>
+<p>
+    The reason to use the sine function is to cause the desired Alavalnche Effect. This means that inputs that
+    are close together produce outputs that are not close together.
+</p>
+
+<h3>Creating Irreversibility:</h3>
+<p>
+    I then change the bit array to a new one by switching the boolean value to every element. Then if we do steps
+    2 and 3 again on this new array, we get another set of integers, x_i*. Finally, I added them together and divided by
+    two to get y_i. The last step is to convert the y_i's into hexadecimal numbers and concatenate them all together
+    to get the hash.
+</p>
+
+<h1>Issues:</h1>
+<p>
+    This hashing algorithm has really not been tested properly and so I don't know if it is secure. 
+    I also don't have much of any experience in Cryptography (yet) and so I couldn't really verify things like 
+    "computationally irreversible" or "statistically collision-free". I would like to see if I could verify those things
+    at some point in the future. I did notice that it isn't perfect at taking nearby inputs to non-nearby outputs,
+    for example, if f is the algorithm described above, then
+</p>
+<div class="pseudocodeBlock2">
+    <p class="pseudocodeText">f("Hello") = 07a73c9bc3e1ebcc859b7a9f1069e38f69855a1813317ae7ada700ff18283cee,</p>
+    <p class="pseudocodeText">f("Hillo") = fa773c9b11ffe4dbd6fe904f1069107326c5be9928837ae7cdfd5cbeb189469e,</p>
+</div>
+<p>
+    and there are definitely certain similarities between the two. One of the biggest problems I think with this
+    algorithm is that the output of sine tends to cluster values towards 1, and puts less near 0. Of course, Sine
+    is what makes this function avalanche at all, but it is by no means the best method of doing so.
+</p>
+
+
+
+
+

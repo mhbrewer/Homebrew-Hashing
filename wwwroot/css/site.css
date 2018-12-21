@@ -1,0 +1,97 @@
+* {
+    vertical-align: baseline;
+    font-family: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+.inline {
+    display: inline-block;
+}
+.selected {
+    background-color: black;
+    color: white;
+}
+button {
+    color: black;
+    border: 2px solid;
+    border-color: black;
+    background-color: lightgray;
+    transition: 0.3s;
+    border-radius: 3px;
+    padding: 3px;
+}
+.myNavButton{
+    background-color: white;
+    color: gray;
+    border-color: gray;
+    transition: 0.3s;
+    border-radius: 4px;
+    border: 2px solid;
+    padding: 3px;
+}
+.myNavButton:hover{
+    background-color: gray;
+    border-color: white;
+    color: white;
+}
+.bordered {
+    border: 1px solid black;
+}
+.navTitle {
+    font-size: 30px;
+}
+#myNav {
+    background-color: lightgray;
+    margin-bottom: 5px;
+}
+h1 {
+    font-size: 20px;
+}
+.output {
+    margin-top: 5px;
+}
+.block {
+    border-radius: 5px;
+    background-color: tan;
+    padding: 20px;
+    margin: 10px 0px 10px 0px;
+}
+.blockBox {
+    background-color: white;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.left {
+    display: inline-block;
+    width: 15%;
+}
+.right {
+    display: inline-block;
+    width: 80%;
+}
+.hashBox {
+    padding: 3px;
+}
+h1 {
+    font-size: 40px;
+}
+.pseudocodeBlock {
+    margin-left: 400px;
+}
+.pseudocodeBlock2 {
+    margin-left: 300px;
+}
+h2 {
+    font-size: 25px;
+}
+.pseudocodeText {
+    font-weight: bold;
+}
+.tab {
+    margin-left: 40px;
+    margin-top: -10px;
+}

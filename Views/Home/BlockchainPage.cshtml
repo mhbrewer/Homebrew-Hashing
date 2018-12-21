@@ -1,0 +1,31 @@
+@using HashApp
+@model Block[]
+@{
+    ViewData["Title"] = "Blockchain Page";
+}
+<h1>Blockchain</h1>
+<label class="inline">Data: </label>
+<form class="inline" action="\blockchain" method="get">
+    <input class="bordered" type="text" name="input">
+    <button type="submit">Submit</button>
+</form>
+
+<div class="output">
+    <label class="inline">Output: </label>
+    @foreach(var block in Model) {
+    <div class="block">
+        <div class="left">
+            <p>Block ID: </p>
+            <p>Data: </p>
+            <p>Previous Hash: </p>
+            <p>Current Hash: </p>
+        </div>
+        <div class="right">
+            <p class="blockBox">@block.BlockId</p>
+            <p class="blockBox">@block.data</p>
+            <p class="blockBox">@block.prev</p>
+            <p class="blockBox">@block.hash</p>
+        </div>
+    </div>
+    }
+</div>
